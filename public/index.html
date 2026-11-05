@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AskAnswer — вопросы и ответы</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="icon"
+      href="static/img/favicon.svg"
+      type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                AskAnswer
+            </a>
+
+            <form class="header-search" action="index.html" method="get">
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Поиск вопросов..."
+                    aria-label="Поиск вопросов">
+            </form>
+
+            <a href="ask.html" class="button button-ask">
+                ASK!
+            </a>
+
+            <div class="user-block">
+                <a href="login.html" class="button button-login">
+                    Войти
+                </a>
+
+                <a href="signup.html" class = "button button-signup">
+                    Регистрация
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Основная область сайта -->
+    <div class="page-layout">
+
+        <main class="main-content">
+
+            <div class="questions-header">
+                <h1> New Questions </h1>
+                <a href="#" class="sort-link">
+                    Hot Questions
+                </a>
+            </div>
+
+            <div class="question-list">
+
+                <article class="question-card">
+
+                    <div class="question-vote">
+                        <div class="question-avatar"
+                            role="img"
+                            aria-label="Аватар Dr. Pepper">
+                            DP
+                        </div>
+
+                        <button type="button"
+                                class="vote-button vote-up"
+                                aria-label="Нравится"
+                                aria-pressed="false">
+                            ▲
+                        </button>
+
+                        <span class="vote-count">5</span>
+
+                        <button type="button"
+                                class="vote-button vote-down"
+                                aria-label="Не нравится"
+                                aria-pressed="false">
+                            ▼
+                        </button>
+                    </div>
+
+                    <div class="question-content">
+
+                        <h2 class="question-title">
+                            <a href="question.html">
+                                How to build a moon park?
+                            </a>
+                        </h2>
+
+                        <p class="question-excerpt">
+                            Guys, I have trouble with a moon park.
+                            I can't find the right solution.
+                            Can anyone help me?
+                        </p>
+
+                        <div class="question-meta">
+                            <a href="question.html">Ответы (3)</a>
+
+                            <span>Теги:</span>
+
+                            <a href="#"
+                               class="question-tag">
+                                black-jack
+                            </a>
+
+                            <time class="question-time"
+                                  datetime="2026-10-17T12:30">
+                                2 часа назад
+                            </time>
+                        </div>
+                    </div>
+
+                </article>
+                <article class="question-card">
+
+            <div class="question-vote">
+                <div class="question-avatar"
+                     role="img"
+                     aria-label="Аватар пользователя">
+                    MF
+                </div>
+
+                <button type="button"
+                        class="vote-button vote-up is-active"
+                        aria-label="Нравится"
+                        aria-pressed="true">
+                    ▲
+                </button>
+
+                <span class="vote-count">6</span>
+
+                <button type="button"
+                        class="vote-button vote-down"
+                        aria-label="Не нравится"
+                        aria-pressed="false">
+                    ▼
+                </button>
+            </div>
+
+            <div class="question-content">
+
+                <h2 class="question-title">
+                    <a href="question.html">
+                        Why does my CSS layout break?
+                    </a>
+                </h2>
+
+                <p class="question-excerpt">
+                    I'm trying to align several elements
+                    using Flexbox, but they don't fit
+                    inside the container.
+                </p>
+
+                <div class="question-meta">
+                    <a href="question.html">Ответы (5)</a>
+
+                    <span>Теги:</span>
+
+                    <a href="#" class="question-tag">
+                        css
+                    </a>
+
+                    <a href="#" class="question-tag">
+                        flexbox
+                    </a>
+
+                    <time class="question-time"
+                          datetime="2026-10-17T09:00">
+                        5 часов назад
+                    </time>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Третья карточка -->
+        <article class="question-card">
+
+            <div class="question-vote">
+                <div class="question-avatar"
+                     role="img"
+                     aria-label="Аватар пользователя">
+                    DH
+                </div>
+
+                <button type="button"
+                        class="vote-button vote-up"
+                        aria-label="Нравится"
+                        aria-pressed="false">
+                    ▲
+                </button>
+
+                <span class="vote-count">2</span>
+
+                <button type="button"
+                        class="vote-button vote-down is-active"
+                        aria-label="Не нравится"
+                        aria-pressed="true">
+                    ▼
+                </button>
+            </div>
+
+            <div class="question-content">
+
+                <h2 class="question-title">
+                    <a href="question.html">
+                        How to center a block on a page?
+                    </a>
+                </h2>
+
+                <p class="question-excerpt">
+                    What is the easiest way to place an
+                    element in the center of its parent?
+                </p>
+
+                <div class="question-meta">
+                    <a href="question.html">Ответы (1)</a>
+
+                    <span>Теги:</span>
+
+                    <a href="#" class="question-tag">
+                        html
+                    </a>
+
+                    <a href="#" class="question-tag">
+                        css
+                    </a>
+
+                    <time class="question-time"
+                          datetime="2026-10-16T20:00">
+                        Вчера
+                    </time>
+                </div>
+
+            </div>
+        </article>
+
+            </div>
+
+            <nav class="pagination" aria-label="Страницы вопросов">
+
+        <span class="pagination-link is-disabled">
+            «
+        </span>
+
+        <span class="pagination-link is-active"aria-current="page">1</span>
+
+        <a href="#" class="pagination-link">2</a>
+
+        <a href="#" class="pagination-link">3</a>
+
+        <a href="#" class="pagination-link">»</a>
+
+    </nav>
+
+        </main>
+
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+
+            <section class="sidebar-section">
+                <h3> Популярные теги </h3>
+
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">Python</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section members">
+                <h4> Лучшие участники </h4>
+
+                <ul>
+                    <li><a href="#">Mr. Freeman</a></li>
+                    <li><a href="#">Dr. Who</a></li>
+                    <li><a href="#">Ben</a></li>
+                </ul>
+            </section>
+        </aside>
+
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p> © 2026 AskAnswer — вопросы и ответы </p>
+        </div>
+    </footer>
+
+</body>
+</html>

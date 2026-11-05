@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AskAnswer — задать вопрос</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="icon"
+      href="static/img/favicon.svg"
+      type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                AskAnswer
+            </a>
+
+            <form class="header-search" action="index.html" method="get">
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Поиск вопросов..."
+                    aria-label="Поиск вопросов">
+            </form>
+
+            <a href="ask.html" class="button button-ask">
+                ASK!
+            </a>
+
+            <div class="user-block">
+                <a href="login.html" class="button button-login">
+                    Войти
+                </a>
+
+                <a href="signup.html" class = "button button-signup">
+                    Регистрация
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Основная область сайта -->
+    <div class="page-layout">
+
+        <main class="main-content">
+
+    <section class="ask-page">
+
+        <h1>Задать вопрос</h1>
+
+        <p class="ask-description">
+            Опишите свою проблему и получите помощь от других пользователей.
+        </p>
+
+        <form class="ask-form">
+
+            <!-- Заголовок вопроса -->
+            <div class="form-group">
+                <label for="question-title">
+                    Заголовок вопроса
+                </label>
+
+                <input
+                    type="text"
+                    id="question-title"
+                    name="title"
+                    placeholder="Например: How to learn CSS?"
+                    required>
+
+                <span class="form-hint">
+                    Кратко сформулируйте суть вопроса.
+                </span>
+            </div>
+
+            <!-- Текст вопроса -->
+            <div class="form-group">
+                <label for="question-text">
+                    Текст вопроса
+                </label>
+
+                <textarea
+                    id="question-text"
+                    name="text"
+                    rows="8"
+                    placeholder="Подробно опишите свою проблему..."
+                    required></textarea>
+
+                <span class="form-hint">
+                    Добавьте подробности, чтобы другим пользователям
+                    было проще вам помочь.
+                </span>
+            </div>
+
+            <!-- Теги -->
+            <div class="form-group">
+                <label for="question-tags">
+                    Теги
+                </label>
+
+                <input
+                    type="text"
+                    id="question-tags"
+                    name="tags"
+                    placeholder="Например: html, css, python">
+
+                <span class="form-hint">
+                    Укажите несколько ключевых слов через запятую.
+                </span>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <button type="button" class="button button-ask">
+                Опубликовать вопрос
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+
+            <section class="sidebar-section">
+                <h3> Популярные теги </h3>
+
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">Python</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section members">
+                <h4> Лучшие участники </h4>
+
+                <ul>
+                    <li><a href="#">Mr. Freeman</a></li>
+                    <li><a href="#">Dr. Who</a></li>
+                    <li><a href="#">Ben</a></li>
+                </ul>
+            </section>
+        </aside>
+
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p> © 2026 AskAnswer — вопросы и ответы </p>
+        </div>
+    </footer>
+
+</body>
+</html>

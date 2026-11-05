@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>AskAnswer — профиль пользователя</title>
+
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                AskAnswer
+            </a>
+
+            <form class="header-search" action="index.html" method="get">
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Поиск вопросов..."
+                    aria-label="Поиск вопросов">
+            </form>
+
+            <a href="ask.html" class="button button-ask">
+                ASK!
+            </a>
+
+            <div class="user-block">
+                <a href="login.html" class="button button-login">
+                    Войти
+                </a>
+
+                <a href="signup.html" class = "button button-signup">
+                    Регистрация
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Основная область сайта -->
+    <div class="page-layout">
+
+        <main class="main-content">
+
+    <section class="profile-page">
+
+        <!-- Заголовок профиля -->
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                DP
+            </div>
+
+            <div class="profile-heading">
+                <h1>Dr. Pepper</h1>
+                <p>Участник AskAnswer</p>
+            </div>
+
+        </div>
+
+        <!-- Информация о пользователе -->
+        <section class="profile-info">
+
+            <h2>Информация о пользователе</h2>
+
+            <div class="profile-details">
+
+                <div class="profile-detail">
+                    <span>Email</span>
+                    <p>dr.pepper@example.com</p>
+                </div>
+
+                <div class="profile-detail">
+                    <span>Дата регистрации</span>
+                    <p>17 октября 2026</p>
+                </div>
+
+                <div class="profile-detail">
+                    <span>Количество вопросов</span>
+                    <p>12</p>
+                </div>
+
+                <div class="profile-detail">
+                    <span>Количество ответов</span>
+                    <p>28</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Последние вопросы пользователя -->
+        <section class="profile-activity">
+
+            <h2>Последние вопросы</h2>
+
+            <div class="profile-question">
+
+                <a href="question.html">
+                    How to build a moon park?
+                </a>
+
+                <span>Ответы (3)</span>
+
+            </div>
+
+            <div class="profile-question">
+
+                <a href="question.html">
+                    Why does my CSS layout break?
+                </a>
+
+                <span>Ответы (5)</span>
+
+            </div>
+
+            <div class="profile-question">
+
+                <a href="question.html">
+                    How to center a block on a page?
+                </a>
+
+                <span>Ответы (1)</span>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+
+            <section class="sidebar-section">
+                <h3> Популярные теги </h3>
+
+                <ul>
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">Python</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section members">
+                <h4> Лучшие участники </h4>
+
+                <ul>
+                    <li><a href="#">Mr. Freeman</a></li>
+                    <li><a href="#">Dr. Who</a></li>
+                    <li><a href="#">Ben</a></li>
+                </ul>
+            </section>
+        </aside>
+
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p> © 2026 AskAnswer — вопросы и ответы </p>
+        </div>
+    </footer>
+
+</body>
+</html>
