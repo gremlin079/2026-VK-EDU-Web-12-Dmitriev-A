@@ -43,6 +43,7 @@ project/
 ├── manage.py
 ├── requirements.txt
 ├── Dockerfile
+├── .dockerignore
 ├── docker-compose.yml
 ├── .env.example
 └── .gitignore
