@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль пользователя — AskAnswer{% endblock %}
+
+{% block content %}
+    <section class="profile-page">
+        <div class="profile-header">
+            <div class="profile-avatar">DP</div>
+            <div class="profile-heading">
+                <h1>Dr. Pepper</h1>
+                <p>Участник AskAnswer</p>
+            </div>
+        </div>
+
+        <section class="profile-info">
+            <h2>Информация о пользователе</h2>
+            <div class="profile-details">
+                <div class="profile-detail">
+                    <span>Email</span>
+                    <p>dr.pepper@example.com</p>
+                </div>
+                <div class="profile-detail">
+                    <span>Дата регистрации</span>
+                    <p>17 октября 2026</p>
+                </div>
+                <div class="profile-detail">
+                    <span>Количество вопросов</span>
+                    <p>12</p>
+                </div>
+                <div class="profile-detail">
+                    <span>Количество ответов</span>
+                    <p>28</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-activity">
+            <h2>Последние вопросы</h2>
+            <div class="profile-question">
+                <a href="{% url 'question' question_id=35 %}">How to build a moon park?</a>
+                <span>Ответы (3)</span>
+            </div>
+            <div class="profile-question">
+                <a href="{% url 'question' question_id=36 %}">Why does my CSS layout break?</a>
+                <span>Ответы (5)</span>
+            </div>
+            <div class="profile-question">
+                <a href="{% url 'question' question_id=37 %}">How to center a block on a page?</a>
+                <span>Ответы (1)</span>
+            </div>
+        </section>
+    </section>
+{% endblock %}

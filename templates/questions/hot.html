@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Популярные вопросы — AskAnswer{% endblock %}
+
+{% block content %}
+    <div class="questions-header">
+        <h1>Hot Questions</h1>
+        <a href="{% url 'index' %}" class="sort-link">New Questions</a>
+    </div>
+    {% include 'questions/_question_list.html' %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Задать вопрос — AskAnswer{% endblock %}
+
+{% block content %}
+    <section class="ask-page">
+        <h1>Задать вопрос</h1>
+        <p class="ask-description">Опишите свою проблему и получите помощь от других пользователей.</p>
+
+        <form class="ask-form">
+            <div class="form-group">
+                <label for="question-title">Заголовок вопроса</label>
+                <input type="text" id="question-title" name="title" placeholder="Например: How to learn CSS?" required>
+                <span class="form-hint">Кратко сформулируйте суть вопроса.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="question-text">Текст вопроса</label>
+                <textarea id="question-text" name="text" rows="8" placeholder="Подробно опишите свою проблему..." required></textarea>
+                <span class="form-hint">Добавьте подробности, чтобы другим пользователям было проще вам помочь.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="question-tags">Теги</label>
+                <input type="text" id="question-tags" name="tags" placeholder="Например: html, css, python">
+                <span class="form-hint">Укажите несколько ключевых слов через запятую.</span>
+            </div>
+
+            <button type="button" class="button button-ask">Опубликовать вопрос</button>
+        </form>
+    </section>
+{% endblock %}
