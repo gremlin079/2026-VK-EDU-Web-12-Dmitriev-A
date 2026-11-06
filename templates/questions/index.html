@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Новые вопросы — AskAnswer{% endblock %}
+
+{% block content %}
+    <div class="questions-header">
+        <h1>New Questions</h1>
+        <a href="{% url 'hot' %}" class="sort-link">Hot Questions</a>
+    </div>
+    {% include 'questions/_question_list.html' %}
+{% endblock %}

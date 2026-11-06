@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}AskAnswer — вопросы и ответы{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+</head>
+<body>
+    <!-- Общая шапка сайта -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="{% url 'index' %}" class="logo">AskAnswer</a>
+
+            <form class="header-search" action="{% url 'index' %}" method="get">
+                <input type="search" name="q" placeholder="Поиск вопросов..." aria-label="Поиск вопросов">
+            </form>
+
+            <a href="{% url 'ask' %}" class="button button-ask">ASK!</a>
+
+            <div class="user-block">
+                <a href="{% url 'login' %}" class="button button-login">Войти</a>
+                <a href="{% url 'signup' %}" class="button button-signup">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основная область: содержимое страницы + боковая панель -->
+    <div class="page-layout">
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <aside class="sidebar">
+            <section class="sidebar-section">
+                <h3>Популярные теги</h3>
+                <ul>
+                    <li><a href="{% url 'tag' tag_name='html' %}">HTML</a></li>
+                    <li><a href="{% url 'tag' tag_name='css' %}">CSS</a></li>
+                    <li><a href="{% url 'tag' tag_name='python' %}">Python</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-section members">
+                <h4>Лучшие участники</h4>
+                <ul>
+                    <li><a href="{% url 'profile' %}">Mr. Freeman</a></li>
+                    <li><a href="{% url 'profile' %}">Dr. Who</a></li>
+                    <li><a href="{% url 'profile' %}">Ben</a></li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+
+    <!-- Общий подвал -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>© 2026 AskAnswer — вопросы и ответы</p>
+        </div>
+    </footer>
+</body>
+</html>

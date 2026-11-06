@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ question_item.title }} — AskAnswer{% endblock %}
+
+{% block content %}
+    <article class="question-card">
+        <div class="question-vote">
+            <div class="question-avatar">{{ question_item.avatar }}</div>
+
+            <button type="button" class="vote-button vote-up" aria-label="Нравится">
+                ▲
+            </button>
+
+            <span class="vote-count">{{ question_item.votes }}</span>
+
+            <button type="button" class="vote-button vote-down" aria-label="Не нравится">
+                ▼
+            </button>
+        </div>
+
+        <div class="question-content">
+            <h1 class="question-title">{{ question_item.title }}</h1>
+
+            <p class="question-excerpt">{{ question_item.text }}</p>
+
+            <div class="question-meta">
+                <span>Теги:</span>
+
+                {% for tag in question_item.tags %}
+                    <a href="{% url 'tag' tag_name=tag %}" class="question-tag">
+                        {{ tag }}
+                    </a>
+                {% endfor %}
+
+                <time class="question-time" datetime="{{ question_item.datetime }}">
+                    {{ question_item.time_ago }}
+                </time>
+            </div>
+        </div>
+    </article>
+
+    <section class="answers-section">
+        <h2>Ответы ({{ question_item.answers_count }})</h2>
+
+        {% for answer in question_item.answers %}
+            <article class="answer-card">
+                <div class="answer-author">{{ answer.author }}</div>
+                <p>{{ answer.text }}</p>
+            </article>
+        {% empty %}
+            <p>Пока нет ответов.</p>
+        {% endfor %}
+    </section>
+{% endblock %}

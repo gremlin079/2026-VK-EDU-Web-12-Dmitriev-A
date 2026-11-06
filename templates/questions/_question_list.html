@@ -1,0 +1,54 @@
+<div class="question-list">
+    {% for item in questions %}
+        <article class="question-card">
+            <div class="question-vote">
+                <div class="question-avatar" role="img" aria-label="Аватар пользователя">{{ item.avatar }}</div>
+                <button type="button" class="vote-button vote-up" aria-label="Нравится" aria-pressed="false">▲</button>
+                <span class="vote-count">{{ item.votes }}</span>
+                <button type="button" class="vote-button vote-down" aria-label="Не нравится" aria-pressed="false">▼</button>
+            </div>
+
+            <div class="question-content">
+                <h2 class="question-title">
+                    <a href="{% url 'question' question_id=item.id %}">{{ item.title }}</a>
+                </h2>
+                <p class="question-excerpt">{{ item.text }}</p>
+
+                <div class="question-meta">
+                    <a href="{% url 'question' question_id=item.id %}">Ответы ({{ item.answers_count }})</a>
+                    <span>Теги:</span>
+                    {% for tag in item.tags %}
+                        <a href="{% url 'tag' tag_name=tag %}" class="question-tag">{{ tag }}</a>
+                    {% endfor %}
+                    <time class="question-time" datetime="{{ item.datetime }}">{{ item.time_ago }}</time>
+                </div>
+            </div>
+        </article>
+    {% empty %}
+        <p>Пока нет вопросов.</p>
+    {% endfor %}
+</div>
+
+{% if page_obj %}
+    <nav class="pagination" aria-label="Страницы вопросов">
+        {% if page_obj.has_previous %}
+            <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">«</a>
+        {% else %}
+            <span class="pagination-link is-disabled">«</span>
+        {% endif %}
+
+        {% for page_number in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_number %}
+                <span class="pagination-link is-active" aria-current="page">{{ page_number }}</span>
+            {% else %}
+                <a class="pagination-link" href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">»</a>
+        {% else %}
+            <span class="pagination-link is-disabled">»</span>
+        {% endif %}
+    </nav>
+{% endif %}

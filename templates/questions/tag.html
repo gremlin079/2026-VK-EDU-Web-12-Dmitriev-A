@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Вопросы по тегу {{ tag_name }} — AskAnswer{% endblock %}
+
+{% block content %}
+    <div class="questions-header">
+        <h1>Тег: {{ tag_name }}</h1>
+        <a href="{% url 'index' %}" class="sort-link">Все вопросы</a>
+    </div>
+    {% include 'questions/_question_list.html' %}
+{% endblock %}

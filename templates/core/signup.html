@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация — AskAnswer{% endblock %}
+
+{% block content %}
+    <section class="auth-page">
+        <h1>Регистрация</h1>
+        <p class="auth-description">Создайте аккаунт, чтобы задавать вопросы и помогать другим пользователям.</p>
+
+        <form class="auth-form">
+            <div class="form-group">
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" name="username" placeholder="Введите имя пользователя" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Придумайте пароль" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password-confirm">Повторите пароль</label>
+                <input type="password" id="password-confirm" name="password-confirm" placeholder="Повторите пароль" required>
+            </div>
+
+            <div class="registration-options">
+                <label>
+                    <input type="checkbox" name="agreement" required>
+                    Я согласен с условиями использования
+                </label>
+            </div>
+
+            <button type="button" class="button button-ask">Зарегистрироваться</button>
+            <p class="auth-registration">
+                Уже есть аккаунт?
+                <a href="{% url 'login' %}">Войти</a>
+            </p>
+        </form>
+    </section>
+{% endblock %}
