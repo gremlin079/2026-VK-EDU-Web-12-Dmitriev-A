@@ -1,0 +1,46 @@
+{% if page_obj.paginator.num_pages > 1 %}
+
+<nav class="pagination" aria-label="Пагинация">
+
+    {% if page_obj.has_previous %}
+        <a class="pagination-link"
+           href="?page={{ page_obj.previous_page_number }}">
+            &laquo;
+        </a>
+    {% endif %}
+
+    {% for page_number in page_obj.elided_page_range %}
+
+        {% if page_number == page_obj.paginator.ELLIPSIS %}
+
+            <span class="pagination-ellipsis">
+                {{ page_number }}
+            </span>
+
+        {% elif page_number == page_obj.number %}
+
+            <span class="pagination-link is-active">
+                {{ page_number }}
+            </span>
+
+        {% else %}
+
+            <a class="pagination-link"
+               href="?page={{ page_number }}">
+                {{ page_number }}
+            </a>
+
+        {% endif %}
+
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a class="pagination-link"
+           href="?page={{ page_obj.next_page_number }}">
+            &raquo;
+        </a>
+    {% endif %}
+
+</nav>
+
+{% endif %}
