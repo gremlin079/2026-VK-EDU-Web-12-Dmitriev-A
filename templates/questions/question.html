@@ -11,8 +11,16 @@
     <div class="question-vote">
 
         <div class="question-avatar">
-            {{ question_item.avatar }}
-        </div>
+            {% if item.author.profile.avatar %}
+                <img
+                    src="{{ item.author.profile.avatar }}"
+                    alt="Аватар {{ item.author.username }}"
+                    loading="lazy"
+                >
+            {% else %}
+                {{ item.avatar }}
+            {% endif %}
+</div>
 
         <button type="button"
                 class="vote-button vote-up"
