@@ -34,24 +34,63 @@
         </main>
 
         <aside class="sidebar">
-            <section class="sidebar-section">
-                <h3>Популярные теги</h3>
-                <ul>
-                    <li><a href="{% url 'tag' tag_name='html' %}">HTML</a></li>
-                    <li><a href="{% url 'tag' tag_name='css' %}">CSS</a></li>
-                    <li><a href="{% url 'tag' tag_name='python' %}">Python</a></li>
-                </ul>
-            </section>
 
-            <section class="sidebar-section members">
-                <h4>Лучшие участники</h4>
-                <ul>
-                    <li><a href="{% url 'profile' %}">Mr. Freeman</a></li>
-                    <li><a href="{% url 'profile' %}">Dr. Who</a></li>
-                    <li><a href="{% url 'profile' %}">Ben</a></li>
-                </ul>
-            </section>
-        </aside>
+    <!-- Популярные теги -->
+    <section class="sidebar-section">
+
+        <h3>Популярные теги</h3>
+
+        <ul>
+            {% for tag in popular_tags %}
+
+                <li>
+                    <a href="{% url 'tag' tag_name=tag.slug %}">
+                        {{ tag.name }}
+                    </a>
+
+                    <span class="tag-count">
+                        ({{ tag.questions_count }})
+                    </span>
+                </li>
+
+            {% empty %}
+
+                <li>Пока нет популярных тегов</li>
+
+            {% endfor %}
+        </ul>
+
+    </section>
+
+
+    <!-- Лучшие участники -->
+    <section class="sidebar-section members">
+
+        <h4>Лучшие участники</h4>
+
+        <ul>
+            {% for member in best_members %}
+
+                <li>
+                    <a href="{% url 'profile' %}">
+                        {{ member.user.get_full_name|default:member.user.username }}
+                    </a>
+
+                    <span class="member-rating">
+                        ({{ member.total_likes }})
+                    </span>
+                </li>
+
+            {% empty %}
+
+                <li>Пока нет участников с рейтингом</li>
+
+            {% endfor %}
+        </ul>
+
+    </section>
+
+</aside>
     </div>
 
     <!-- Общий подвал -->
