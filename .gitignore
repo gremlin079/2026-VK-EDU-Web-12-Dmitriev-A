@@ -1,9 +1,7 @@
 
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-*.so
+*$py.class
 
 
 .venv/
@@ -12,16 +10,10 @@ env/
 ENV/
 
 
-.idea/
-.vscode/
-*.iml
-
-
 *.log
 db.sqlite3
-db.sqlite3-journal
-staticfiles/
 media/
+staticfiles/
 
 
 .env
@@ -30,7 +22,12 @@ media/
 !.env.docker.example
 
 
-.docker/
+.idea/
+.vscode/
+
+
+.DS_Store
+Thumbs.db
 
 
 .pytest_cache/

@@ -1,53 +1,78 @@
 {% extends 'base.html' %}
 
-{% block title %}Профиль пользователя — AskAnswer{% endblock %}
+{% block title %}Мой профиль — AskAnswer{% endblock %}
 
 {% block content %}
-    <section class="profile-page">
-        <div class="profile-header">
-            <div class="profile-avatar">DP</div>
-            <div class="profile-heading">
-                <h1>Dr. Pepper</h1>
-                <p>Участник AskAnswer</p>
-            </div>
+<section class="profile-page">
+
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {% if profile and profile.avatar %}
+                <img
+                    src="{{ profile.avatar }}"
+                    alt="Аватар {{ request.user.username }}"
+                >
+            {% else %}
+                {{ request.user.username|first|upper }}
+            {% endif %}
+</div>
+
+        <div class="profile-heading">
+            <h1>{{ request.user.get_full_name|default:request.user.username }}</h1>
+            <p>Профиль пользователя AskAnswer</p>
         </div>
+    </div>
 
-        <section class="profile-info">
-            <h2>Информация о пользователе</h2>
-            <div class="profile-details">
-                <div class="profile-detail">
-                    <span>Email</span>
-                    <p>dr.pepper@example.com</p>
-                </div>
-                <div class="profile-detail">
-                    <span>Дата регистрации</span>
-                    <p>17 октября 2026</p>
-                </div>
-                <div class="profile-detail">
-                    <span>Количество вопросов</span>
-                    <p>12</p>
-                </div>
-                <div class="profile-detail">
-                    <span>Количество ответов</span>
-                    <p>28</p>
-                </div>
-            </div>
-        </section>
+    <section class="profile-info">
+        <h2>Редактирование профиля</h2>
 
-        <section class="profile-activity">
-            <h2>Последние вопросы</h2>
-            <div class="profile-question">
-                <a href="{% url 'question' question_id=35 %}">How to build a moon park?</a>
-                <span>Ответы (3)</span>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+
+        <form class="auth-form" method="post">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                        <p class="form-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <div class="form-group">
+                <label for="avatar">Аватар (только просмотр)</label>
+
+                <input
+                    type="url"
+                    id="avatar"
+                    value="{% if profile %}{{ profile.avatar }}{% endif %}"
+                    readonly
+                >
+
+                <small class="form-hint">
+                    Изменение аватара в рамках этого задания не сохраняется.
+                </small>
             </div>
-            <div class="profile-question">
-                <a href="{% url 'question' question_id=36 %}">Why does my CSS layout break?</a>
-                <span>Ответы (5)</span>
-            </div>
-            <div class="profile-question">
-                <a href="{% url 'question' question_id=37 %}">How to center a block on a page?</a>
-                <span>Ответы (1)</span>
-            </div>
-        </section>
+
+            <button type="submit" class="button button-ask">
+                Сохранить изменения
+            </button>
+        </form>
     </section>
+
+</section>
 {% endblock %}

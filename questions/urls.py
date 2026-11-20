@@ -5,6 +5,18 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('hot/', views.hot, name='hot'),
     path('tag/<str:tag_name>/', views.tag, name='tag'),
-    path('question/<int:question_id>/', views.detail, name='question'),
+
+    path(
+        'question/<int:question_id>/answer/',
+        views.create_answer,
+        name='answer_create'
+    ),
+
+    path(
+        'question/<int:question_id>/',
+        views.detail,
+        name='question'
+    ),
+
     path('ask/', views.ask, name='ask'),
 ]
