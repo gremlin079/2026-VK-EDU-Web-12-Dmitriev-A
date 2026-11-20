@@ -2,11 +2,17 @@
     {% for item in questions %}
         <article class="question-card">
             <div class="question-vote">
-                <div class="question-avatar"
-                     role="img"
-                     aria-label="Аватар пользователя">
-                    {{ item.avatar }}
-                </div>
+                <div class="question-avatar">
+                    {% if item.author.profile.avatar %}
+                        <img
+                            src="{{ item.author.profile.avatar }}"
+                            alt="Аватар {{ item.author.username }}"
+                            loading="lazy"
+                        >
+                    {% else %}
+                        {{ item.avatar }}
+                    {% endif %}
+</div>
 
                 <button type="button"
                         class="vote-button vote-up"
