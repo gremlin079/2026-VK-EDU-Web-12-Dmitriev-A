@@ -3,43 +3,88 @@
 {% block title %}Регистрация — AskAnswer{% endblock %}
 
 {% block content %}
-    <section class="auth-page">
-        <h1>Регистрация</h1>
-        <p class="auth-description">Создайте аккаунт, чтобы задавать вопросы и помогать другим пользователям.</p>
 
-        <form class="auth-form">
-            <div class="form-group">
-                <label for="username">Имя пользователя</label>
-                <input type="text" id="username" name="username" placeholder="Введите имя пользователя" required>
+<section class="auth-page">
+
+    <h1>Регистрация</h1>
+
+    <p class="auth-description">
+        Создайте аккаунт, чтобы задавать вопросы и помогать другим пользователям.
+    </p>
+
+    <form class="auth-form" method="post" action="{% url 'signup' %}">
+
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="form-errors">
+                {{ form.non_field_errors }}
             </div>
+        {% endif %}
 
-            <div class="form-group">
-                <label for="email">Электронная почта</label>
-                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-            </div>
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Логин</label>
 
-            <div class="form-group">
-                <label for="password">Пароль</label>
-                <input type="password" id="password" name="password" placeholder="Придумайте пароль" required>
-            </div>
+            {{ form.username }}
 
-            <div class="form-group">
-                <label for="password-confirm">Повторите пароль</label>
-                <input type="password" id="password-confirm" name="password-confirm" placeholder="Повторите пароль" required>
-            </div>
+            {% for error in form.username.errors %}
+                <span class="form-error">{{ error }}</span>
+            {% endfor %}
+        </div>
 
-            <div class="registration-options">
-                <label>
-                    <input type="checkbox" name="agreement" required>
-                    Я согласен с условиями использования
-                </label>
-            </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Электронная почта</label>
 
-            <button type="button" class="button button-ask">Зарегистрироваться</button>
-            <p class="auth-registration">
-                Уже есть аккаунт?
-                <a href="{% url 'login' %}">Войти</a>
-            </p>
-        </form>
-    </section>
+            {{ form.email }}
+
+            {% for error in form.email.errors %}
+                <span class="form-error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.first_name.id_for_label }}">Имя</label>
+
+            {{ form.first_name }}
+
+            {% for error in form.first_name.errors %}
+                <span class="form-error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Пароль</label>
+
+            {{ form.password1 }}
+
+            {% for error in form.password1.errors %}
+                <span class="form-error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">
+                Повторите пароль
+            </label>
+
+            {{ form.password2 }}
+
+            {% for error in form.password2.errors %}
+                <span class="form-error">{{ error }}</span>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="button button-ask">
+            Зарегистрироваться
+        </button>
+
+        <p class="auth-registration">
+            Уже есть аккаунт?
+            <a href="{% url 'login' %}">Войти</a>
+        </p>
+
+    </form>
+
+</section>
+
 {% endblock %}

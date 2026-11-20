@@ -11,20 +11,23 @@
     <div class="question-vote">
 
         <div class="question-avatar">
-            {% if item.author.profile.avatar %}
+            {% if question_item.author.profile.avatar %}
                 <img
-                    src="{{ item.author.profile.avatar }}"
-                    alt="Аватар {{ item.author.username }}"
-                    loading="lazy"
+                    src="{{ question_item.author.profile.avatar }}"
+                    alt="Аватар {{ question_item.author.username }}"
                 >
             {% else %}
-                {{ item.avatar }}
+                {{ question_item.avatar }}
             {% endif %}
 </div>
 
         <button type="button"
                 class="vote-button vote-up"
-                aria-label="Нравится">▲</button>
+                aria-label="Нравится"
+                {% if not user.is_authenticated %}
+                    disabled
+                    title="Войдите, чтобы оценивать вопросы"
+                {% endif %}>▲</button>
 
         <span class="vote-count">
             {{ question_item.votes }}
@@ -32,7 +35,11 @@
 
         <button type="button"
                 class="vote-button vote-down"
-                aria-label="Не нравится">▼</button>
+                aria-label="Не нравится"
+                {% if not user.is_authenticated %}
+                    disabled
+                    title="Войдите, чтобы оценивать вопросы"
+                {% endif %}>▼</button>
 
     </div>
 
@@ -77,7 +84,7 @@
 
     {% for answer in answers %}
 
-        <article class="answer-card">
+        <article class="answer-card" id="answer-{{ answer.pk }}">
 
             <div class="answer-author">
                 {{ answer.author.username }}
@@ -94,6 +101,74 @@
     {% endfor %}
 
     {% include 'questions/_pagination.html' with page_obj=answers_page_obj %}
+
+</section>
+
+
+<section class="answers-section">
+
+    <h2>Добавить ответ</h2>
+
+    {% if user.is_authenticated %}
+
+        <form class="ask-form"
+              method="post"
+              action="{% url 'answer_create' question_id=question_item.pk %}">
+
+            {% csrf_token %}
+
+            {% if answer_form.non_field_errors %}
+                <div class="form-errors">
+                    {{ answer_form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+
+                <label for="{{ answer_form.text.id_for_label }}">
+                    {{ answer_form.text.label }}
+                </label>
+
+                {{ answer_form.text }}
+
+                {% for error in answer_form.text.errors %}
+                    <p class="form-error">{{ error }}</p>
+                {% endfor %}
+
+            </div>
+
+            <button type="submit" class="button button-ask">
+                Отправить ответ
+            </button>
+
+        </form>
+
+    {% else %}
+
+        <div class="form-group">
+            <textarea
+                rows="6"
+                disabled
+                placeholder="Войдите, чтобы написать ответ">
+            </textarea>
+
+            <button
+                type="button"
+                class="button button-ask"
+                disabled
+                title="Войдите в аккаунт, чтобы ответить">
+                Отправить ответ
+            </button>
+
+            <p class="form-hint">
+                Чтобы оставить ответ,
+                <a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">
+                    войдите в аккаунт
+                </a>.
+            </p>
+        </div>
+
+    {% endif %}
 
 </section>
 

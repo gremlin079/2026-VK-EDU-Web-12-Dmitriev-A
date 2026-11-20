@@ -16,13 +16,21 @@
 
                 <button type="button"
                         class="vote-button vote-up"
-                        aria-label="Нравится">▲</button>
+                        aria-label="Нравится"
+                        {% if not user.is_authenticated %}
+                            disabled
+                            title="Войдите, чтобы оценивать вопросы"
+                        {% endif %}>▲</button>
 
                 <span class="vote-count">{{ item.votes }}</span>
 
                 <button type="button"
                         class="vote-button vote-down"
-                        aria-label="Не нравится">▼</button>
+                        aria-label="Не нравится"
+                        {% if not user.is_authenticated %}
+                            disabled
+                            title="Войдите, чтобы оценивать вопросы"
+                        {% endif %}>▼</button>
             </div>
 
             <div class="question-content">
